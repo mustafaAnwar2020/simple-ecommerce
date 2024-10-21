@@ -11,8 +11,8 @@ Route::name('front.')
             ->group(function () {
                 Route::get('products', [HomeController::class, 'products'])
                     ->name('products');
-
             });
+        Route::middleware('auth:sanctum')->group(function () {
             Route::resource('orders', OrderController::class)->only('store');
-
+        });
     });

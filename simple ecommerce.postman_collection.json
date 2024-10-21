@@ -2316,8 +2316,32 @@
 						{
 							"name": "store",
 							"request": {
-								"method": "GET",
-								"header": []
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"product_id\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{front_url}}/orders",
+									"host": [
+										"{{front_url}}"
+									],
+									"path": [
+										"orders"
+									]
+								}
 							},
 							"response": [
 								{
