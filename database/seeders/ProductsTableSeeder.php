@@ -22,7 +22,6 @@ class ProductsTableSeeder extends Seeder
 
         $products = [
             [
-                'merchant_id' => 1,
                 'cost' => '100',
                 'price' => '150',
                 'sku' => '123456',

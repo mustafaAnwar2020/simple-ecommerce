@@ -34,7 +34,6 @@ class UserSeeder extends Seeder
                 'active' => true,
                 'guard_name' => 'admin'
             ]);
-        $user->merchant()->create();
 
         User::query()
             ->create([

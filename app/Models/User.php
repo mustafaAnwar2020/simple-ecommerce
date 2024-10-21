@@ -82,13 +82,6 @@ class User extends Authenticatable implements HasMedia
         return ($this->guard_name === 'admin') ? true : $this->roles()->whereRelation('permissions', 'name', $routeName)->exists();
     }
 
-    /**
-     * Get the merchant associated with the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function merchant(): HasOne
-    {
-        return $this->hasOne(Merchant::class, 'user_id');
-    }
+
+
 }
