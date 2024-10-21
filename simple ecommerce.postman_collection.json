@@ -1,0 +1,2490 @@
+{
+	"info": {
+		"_postman_id": "0ebff402-dc7c-4156-a768-5991b2c197c6",
+		"name": "simple ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36490602"
+	},
+	"item": [
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.collectionVariables.set(\"token\", jsonData.data._token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"admin@email.com\",\r\n    \"password\" : \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\" : \"admin@email.com\",\r\n    \"password\" : \"password\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/login",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 19 Oct 2024 00:19:49 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"Admin test\",\n        \"email\": \"admin@email.com\",\n        \"phone\": null,\n        \"_token\": \"1|paun87DaldOAcSawqZ4NgFl13czNCyelmAEWY8Orff55d7ac\",\n        \"permissions\": {\n            \"withTimestamps\": false\n        }\n    },\n    \"message\": \"!تم تسجيل الدخول بنجاح\"\n}"
+								},
+								{
+									"name": "user not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"email\" : \"admin1@email.com\",\r\n    \"password\" : \"password\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/login",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"login"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 19 Oct 2024 00:19:59 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"message\": \"بيانات الاعتماد هذه لا تتطابق مع سجلاتنا\"\n}"
+								}
+							]
+						},
+						{
+							"name": "logout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/logout",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"logout"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 11:05:31 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": [],\n    \"message\": \"!تم تسجيل الخروج بنجاح\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Ingredients",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/dashboard/ingredients?per_page=10&page=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"ingredients"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "10"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{url}}/dashboard/ingredients",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"ingredients"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 19 Oct 2024 01:54:15 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"لحم\",\n                \"created_at\": \"2024 Oct 19 01:36:14\"\n            },\n            {\n                \"id\": 2,\n                \"name\": \"جبن\",\n                \"created_at\": \"2024 Oct 19 01:43:33\"\n            },\n            {\n                \"id\": 3,\n                \"name\": \"بصل\",\n                \"created_at\": \"2024 Oct 19 01:43:44\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"ملح\",\n                \"created_at\": \"2024 Oct 19 01:48:32\"\n            },\n            {\n                \"id\": 5,\n                \"name\": \"فلفل اسود\",\n                \"created_at\": \"2024 Oct 19 01:49:44\"\n            },\n            {\n                \"id\": 6,\n                \"name\": \"فلفل اسود\",\n                \"created_at\": \"2024 Oct 19 01:53:46\"\n            }\n        ],\n        \"current_page\": 1,\n        \"last_page\": 1,\n        \"items_count\": 6\n    },\n    \"message\": \"بيانات المكونات\"\n}"
+								}
+							]
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ar\" :{\r\n        \"name\" : \"فلفل اسود\"\r\n    },\r\n    \"en\" :{\r\n        \"name\" : \"black paper\"\r\n    },\r\n    \"stock\" : 100,\r\n    \"unit\" : \"g\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/dashboard/ingredients",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"ingredients"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "validation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ar\" :{\r\n        \"name\" : \"فلفل اسود\"\r\n    },\r\n    \"en\" :{\r\n        \"name\" : \"black paper\"\r\n    },\r\n    \"stock\" : 100,\r\n    \"unit\" : \"gaaa\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/dashboard/ingredients",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"ingredients"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 19 Oct 2024 01:53:25 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"message\": \"validation error\",\n    \"errors\": {\n        \"type\": [\n            \"نوع المخزون يجب ان يكون g او kg\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "validation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "// {\r\n//     \"ar\" :{\r\n//         \"name\" : \"فلفل اسود\"\r\n//     },\r\n//     \"en\" :{\r\n//         \"name\" : \"black paper\"\r\n//     },\r\n//     \"stock\" : 100,\r\n//     \"unit\" : \"g\"\r\n// }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/dashboard/ingredients",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"ingredients"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 19 Oct 2024 01:53:51 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "55"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"message\": \"validation error\",\n    \"errors\": {\n        \"stock\": [\n            \"حقل المخزون مطلوب.\"\n        ],\n        \"type\": [\n            \"نوع المخزون مطلوب\"\n        ],\n        \"ar.name\": [\n            \"حقل الاسم باللغة العربية مطلوب.\"\n        ],\n        \"en.name\": [\n            \"حقل الاسم باللغة الإنجليزية مطلوب.\"\n        ]\n    }\n}"
+								},
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ar\" :{\r\n        \"name\" : \"فلفل اسود\"\r\n    },\r\n    \"en\" :{\r\n        \"name\" : \"black paper\"\r\n    },\r\n    \"stock\" : 100,\r\n    \"unit\" : \"g\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/dashboard/ingredients",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"ingredients"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 19:17:45 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"فلفل اسود\",\n        \"stock\": 100,\n        \"unit\": \"g\",\n        \"created_at\": \"2024 Oct 20 19:17:45\"\n    },\n    \"message\": \"بيانات المكونات\"\n}"
+								}
+							]
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dashboard/ingredients/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"ingredients",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dashboard/ingredients/1",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"ingredients",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 19:17:07 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": \"لحم بقري\",\n        \"stock\": 20,\n        \"unit\": \"kg\",\n        \"created_at\": \"2024 Oct 20 19:17:00\"\n    },\n    \"message\": \"بيانات المكونات\"\n}"
+								}
+							]
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dashboard/ingredients/1/edit",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"ingredients",
+										"1",
+										"edit"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dashboard/ingredients/1/edit",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"ingredients",
+												"1",
+												"edit"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 19:17:21 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 1,\n        \"name\": {\n            \"ar\": \"لحم بقري\",\n            \"en\": \"Beef\"\n        },\n        \"stock\": 20,\n        \"unit\": \"kg\",\n        \"created_at\": \"2024 Oct 20 19:17:00\"\n    },\n    \"message\": \"بيانات المكونات\"\n}"
+								}
+							]
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ar\" :{\r\n        \"name\" : \"فلفل اسود\"\r\n    },\r\n    \"en\" :{\r\n        \"name\" : \"black paper\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/dashboard/ingredients/4",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"ingredients",
+										"4"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"ar\" :{\r\n        \"name\" : \"فلفل اسود\"\r\n    },\r\n    \"en\" :{\r\n        \"name\" : \"black paper\"\r\n    }\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/dashboard/ingredients/5",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"ingredients",
+												"5"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 19 Oct 2024 01:58:02 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 5,\n        \"name\": \"فلفل اسود\",\n        \"stock\": 100,\n        \"stock_type\": \"g\",\n        \"created_at\": \"2024 Oct 19 01:49:44\"\n    },\n    \"message\": \"تم تعديل المكون بنجاح\"\n}"
+								},
+								{
+									"name": "validation",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "// {\r\n//     \"ar\" :{\r\n//         \"name\" : \"فلفل اسود\"\r\n//     },\r\n//     \"en\" :{\r\n//         \"name\" : \"black paper\"\r\n//     }\r\n// }",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{url}}/dashboard/ingredients/5",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"ingredients",
+												"5"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 19 Oct 2024 01:58:31 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "55"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"message\": \"api.ingredients.error\",\n    \"errors\": {\n        \"ar.name\": [\n            \"حقل الاسم باللغة العربية مطلوب.\"\n        ],\n        \"en.name\": [\n            \"حقل الاسم باللغة الإنجليزية مطلوب.\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dashboard/ingredients/6",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"ingredients",
+										"6"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dashboard/ingredients/6",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"ingredients",
+												"6"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 19 Oct 2024 01:58:57 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": [],\n    \"message\": \"تم حذف المكون بنجاح\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "index",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dashboard/products?per_page=10&page=1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"products"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "10"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dashboard/products",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"products"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 10:26:59 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "55"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 3,\n                \"name\": \"برجر\",\n                \"sku\": \"81484980\",\n                \"price\": 150,\n                \"image\": \"http://localhost/storage/1/96426.jpg\",\n                \"created_at\": \"2024 Oct 20 09:59:59\"\n            },\n            {\n                \"id\": 4,\n                \"name\": \"برجر\",\n                \"sku\": \"67006018\",\n                \"price\": 150,\n                \"image\": \"http://localhost/storage/2/96426.jpg\",\n                \"created_at\": \"2024 Oct 20 10:09:09\"\n            }\n        ],\n        \"current_page\": 1,\n        \"last_page\": 1,\n        \"items_count\": 2\n    },\n    \"message\": \"بيانات المنتجات\"\n}"
+								}
+							]
+						},
+						{
+							"name": "create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ar[name]",
+											"value": "برجر",
+											"type": "text"
+										},
+										{
+											"key": "ar[description]",
+											"value": "برجر 150 جرام",
+											"type": "text"
+										},
+										{
+											"key": "ar[slug]",
+											"value": "برجر-150-جرام",
+											"type": "text"
+										},
+										{
+											"key": "en[name]",
+											"value": "burger",
+											"type": "text"
+										},
+										{
+											"key": "en[description]",
+											"value": "burger 150 gm",
+											"type": "text"
+										},
+										{
+											"key": "en[slug]",
+											"value": "burger-150-gm",
+											"type": "text"
+										},
+										{
+											"key": "cost",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "150",
+											"type": "text"
+										},
+										{
+											"key": "discount",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "discount_type",
+											"value": "percent",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[0][id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[0][stock]",
+											"value": "150",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[1][id]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[1][stock]",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[2][id]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[2][stock]",
+											"value": "30",
+											"type": "text"
+										},
+										{
+											"key": "images[0][image]",
+											"type": "file",
+											"src": "/D:/photos/96426.jpg"
+										},
+										{
+											"key": "images[0][is_main]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "sku",
+											"value": "{{$randomBankAccount}}",
+											"type": "text"
+										},
+										{
+											"key": "barcode",
+											"value": "{{$randomBankAccount}}",
+											"type": "text"
+										},
+										{
+											"key": "active",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/dashboard/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"products"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "ar[name]",
+													"value": "برجر",
+													"type": "text"
+												},
+												{
+													"key": "ar[description]",
+													"value": "برجر 150 جرام",
+													"type": "text"
+												},
+												{
+													"key": "ar[slug]",
+													"value": "برجر-150-جرام1",
+													"type": "text"
+												},
+												{
+													"key": "en[name]",
+													"value": "burger",
+													"type": "text"
+												},
+												{
+													"key": "en[description]",
+													"value": "burger 150 gm",
+													"type": "text"
+												},
+												{
+													"key": "en[slug]",
+													"value": "burger-150-gm1",
+													"type": "text"
+												},
+												{
+													"key": "cost",
+													"value": "100",
+													"type": "text"
+												},
+												{
+													"key": "price",
+													"value": "150",
+													"type": "text"
+												},
+												{
+													"key": "discount",
+													"value": "10",
+													"type": "text"
+												},
+												{
+													"key": "discount_type",
+													"value": "percent",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[0][id]",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[0][stock]",
+													"value": "150",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[1][id]",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[1][stock]",
+													"value": "20",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[2][id]",
+													"value": "3",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[2][stock]",
+													"value": "30",
+													"type": "text"
+												},
+												{
+													"key": "images[0][image]",
+													"type": "file",
+													"src": "/D:/photos/96426.jpg"
+												},
+												{
+													"key": "images[0][is_main]",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "sku",
+													"value": "{{$randomBankAccount}}",
+													"type": "text"
+												},
+												{
+													"key": "barcode",
+													"value": "{{$randomBankAccount}}",
+													"type": "text"
+												},
+												{
+													"key": "active",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/dashboard/products",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"products"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 10:09:09 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"برجر\",\n        \"description\": \"برجر 150 جرام\",\n        \"slug\": \"برجر-150-جرام1\",\n        \"sku\": \"67006018\",\n        \"barcode\": \"30798424\",\n        \"active\": \"1\",\n        \"cost\": \"100\",\n        \"price\": \"150\",\n        \"discount\": \"10\",\n        \"discount_type\": \"percent\",\n        \"ingredients\": [\n            {\n                \"id\": 1,\n                \"name\": \"لحم بقري\",\n                \"stock\": 150\n            },\n            {\n                \"id\": 2,\n                \"name\": \"بصل\",\n                \"stock\": 20\n            },\n            {\n                \"id\": 3,\n                \"name\": \"جبن\",\n                \"stock\": 30\n            }\n        ],\n        \"images\": [\n            {\n                \"id\": 2,\n                \"is_main\": true,\n                \"image\": \"http://localhost/storage/2/96426.jpg\",\n                \"created_at\": \"2024 Oct 20 10:09:09\"\n            }\n        ],\n        \"created_at\": \"2024 Oct 20 10:09:09\"\n    },\n    \"message\": \"بيانات المنتجات\"\n}"
+								},
+								{
+									"name": "validation",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "ar[name]",
+													"value": "برجر",
+													"type": "text"
+												},
+												{
+													"key": "ar[description]",
+													"value": "برجر 150 جرام",
+													"type": "text"
+												},
+												{
+													"key": "ar[slug]",
+													"value": "برجر-150-جرام1",
+													"type": "text"
+												},
+												{
+													"key": "en[name]",
+													"value": "burger",
+													"type": "text"
+												},
+												{
+													"key": "en[description]",
+													"value": "burger 150 gm",
+													"type": "text"
+												},
+												{
+													"key": "en[slug]",
+													"value": "burger-150-gm1",
+													"type": "text"
+												},
+												{
+													"key": "cost",
+													"value": "100",
+													"type": "text"
+												},
+												{
+													"key": "price",
+													"value": "150",
+													"type": "text"
+												},
+												{
+													"key": "discount",
+													"value": "10",
+													"type": "text"
+												},
+												{
+													"key": "discount_type",
+													"value": "percent",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[0][id]",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[0][stock]",
+													"value": "1501",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[1][id]",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[1][stock]",
+													"value": "20",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[2][id]",
+													"value": "3",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[2][stock]",
+													"value": "30",
+													"type": "text"
+												},
+												{
+													"key": "images[0][image]",
+													"type": "file",
+													"src": "/D:/photos/96426.jpg"
+												},
+												{
+													"key": "images[0][is_main]",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "sku",
+													"value": "{{$randomBankAccount}}",
+													"type": "text"
+												},
+												{
+													"key": "barcode",
+													"value": "{{$randomBankAccount}}",
+													"type": "text"
+												},
+												{
+													"key": "active",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/dashboard/products",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"products"
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 10:09:29 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": false,\n    \"message\": \"validation error\",\n    \"errors\": {\n        \"ar.slug\": [\n            \"تم اختيار ar.slug مسبقاً.\"\n        ],\n        \"en.slug\": [\n            \"تم اختيار en.slug مسبقاً.\"\n        ],\n        \"ingredients.0.stock\": [\n            \"يجب ألا يكون حقل ingredients.0.stock أكبر من 1000.\"\n        ]\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dashboard/products/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dashboard/products/3",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"products",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 10:07:05 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "58"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"برجر\",\n        \"description\": \"برجر 150 جرام\",\n        \"slug\": \"برجر-150-جرام\",\n        \"sku\": \"47310037\",\n        \"barcode\": \"11466533\",\n        \"active\": 1,\n        \"cost\": 100,\n        \"price\": 150,\n        \"discount\": 10,\n        \"discount_type\": \"percent\",\n        \"ingredients\": [\n            {\n                \"id\": 1,\n                \"name\": \"لحم بقري\",\n                \"stock\": 150\n            },\n            {\n                \"id\": 2,\n                \"name\": \"بصل\",\n                \"stock\": 20\n            },\n            {\n                \"id\": 3,\n                \"name\": \"جبن\",\n                \"stock\": 30\n            }\n        ],\n        \"images\": [\n            {\n                \"id\": 1,\n                \"is_main\": true,\n                \"image\": \"http://localhost/storage/1/96426.jpg\",\n                \"created_at\": \"2024 Oct 20 09:59:59\"\n            }\n        ],\n        \"created_at\": \"2024 Oct 20 09:59:59\"\n    },\n    \"message\": \"بيانات المنتجات\"\n}"
+								}
+							]
+						},
+						{
+							"name": "edit",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/dashboard/products/1/edit",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"products",
+										"1",
+										"edit"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{url}}/dashboard/products/3/edit",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"products",
+												"3",
+												"edit"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 10:11:25 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 3,\n        \"name\": {\n            \"ar\": \"برجر\",\n            \"en\": \"burger\"\n        },\n        \"description\": {\n            \"ar\": \"برجر 150 جرام\",\n            \"en\": \"burger 150 gm\"\n        },\n        \"slug\": {\n            \"ar\": \"برجر-150-جرام\",\n            \"en\": \"burger-150-gm\"\n        },\n        \"sku\": \"47310037\",\n        \"barcode\": \"11466533\",\n        \"active\": 1,\n        \"cost\": 100,\n        \"price\": 150,\n        \"discount\": 10,\n        \"discount_type\": \"percent\",\n        \"ingredients_ids\": [\n            1,\n            2,\n            3\n        ],\n        \"ingredients\": [\n            {\n                \"id\": 1,\n                \"name\": \"لحم بقري\",\n                \"stock\": 150\n            },\n            {\n                \"id\": 2,\n                \"name\": \"بصل\",\n                \"stock\": 20\n            },\n            {\n                \"id\": 3,\n                \"name\": \"جبن\",\n                \"stock\": 30\n            }\n        ],\n        \"images_ids\": [\n            1\n        ],\n        \"images\": [\n            {\n                \"id\": 1,\n                \"is_main\": true,\n                \"image\": \"http://localhost/storage/1/96426.jpg\",\n                \"created_at\": \"2024 Oct 20 09:59:59\"\n            }\n        ],\n        \"created_at\": \"2024 Oct 20 09:59:59\"\n    },\n    \"message\": \"بيانات المنتجات\"\n}"
+								}
+							]
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "ar[name]",
+											"value": "برجر",
+											"type": "text"
+										},
+										{
+											"key": "ar[description]",
+											"value": "برجر 150 جرام",
+											"type": "text"
+										},
+										{
+											"key": "ar[slug]",
+											"value": "برجر-150-جرام",
+											"type": "text"
+										},
+										{
+											"key": "en[name]",
+											"value": "burger",
+											"type": "text"
+										},
+										{
+											"key": "en[description]",
+											"value": "burger 150 gm",
+											"type": "text"
+										},
+										{
+											"key": "en[slug]",
+											"value": "burger-150-gm",
+											"type": "text"
+										},
+										{
+											"key": "cost",
+											"value": "100",
+											"type": "text"
+										},
+										{
+											"key": "price",
+											"value": "150",
+											"type": "text"
+										},
+										{
+											"key": "discount",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "discount_type",
+											"value": "percent",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[0][id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[0][stock]",
+											"value": "150",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[1][id]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[1][stock]",
+											"value": "20",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[2][id]",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "ingredients[2][stock]",
+											"value": "30",
+											"type": "text"
+										},
+										{
+											"key": "images[0][is_main]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "images[0][id]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "images[0][image]",
+											"type": "file",
+											"src": "/D:/photos/96426.jpg"
+										},
+										{
+											"key": "sku",
+											"value": "{{$randomBankAccount}}",
+											"type": "text"
+										},
+										{
+											"key": "barcode",
+											"value": "{{$randomBankAccount}}",
+											"type": "text"
+										},
+										{
+											"key": "active",
+											"value": "1",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/dashboard/products/3?_method=put",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"dashboard",
+										"products",
+										"3"
+									],
+									"query": [
+										{
+											"key": "_method",
+											"value": "put"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "ar[name]",
+													"value": "برجر",
+													"type": "text"
+												},
+												{
+													"key": "ar[description]",
+													"value": "برجر 150 جرام",
+													"type": "text"
+												},
+												{
+													"key": "ar[slug]",
+													"value": "برجر-150-جرام",
+													"type": "text"
+												},
+												{
+													"key": "en[name]",
+													"value": "burger",
+													"type": "text"
+												},
+												{
+													"key": "en[description]",
+													"value": "burger 150 gm",
+													"type": "text"
+												},
+												{
+													"key": "en[slug]",
+													"value": "burger-150-gm",
+													"type": "text"
+												},
+												{
+													"key": "cost",
+													"value": "100",
+													"type": "text"
+												},
+												{
+													"key": "price",
+													"value": "150",
+													"type": "text"
+												},
+												{
+													"key": "discount",
+													"value": "10",
+													"type": "text"
+												},
+												{
+													"key": "discount_type",
+													"value": "percent",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[0][id]",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[0][stock]",
+													"value": "150",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[1][id]",
+													"value": "2",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[1][stock]",
+													"value": "20",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[2][id]",
+													"value": "3",
+													"type": "text"
+												},
+												{
+													"key": "ingredients[2][stock]",
+													"value": "30",
+													"type": "text"
+												},
+												{
+													"key": "images[0][is_main]",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "images[0][id]",
+													"value": "1",
+													"type": "text"
+												},
+												{
+													"key": "images[0][image]",
+													"type": "file",
+													"src": "/D:/photos/96426.jpg"
+												},
+												{
+													"key": "sku",
+													"value": "{{$randomBankAccount}}",
+													"type": "text"
+												},
+												{
+													"key": "barcode",
+													"value": "{{$randomBankAccount}}",
+													"type": "text"
+												},
+												{
+													"key": "active",
+													"value": "1",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{url}}/dashboard/products/3?_method=put",
+											"host": [
+												"{{url}}"
+											],
+											"path": [
+												"dashboard",
+												"products",
+												"3"
+											],
+											"query": [
+												{
+													"key": "_method",
+													"value": "put"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 10:26:18 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "57"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"برجر\",\n        \"description\": \"برجر 150 جرام\",\n        \"slug\": \"برجر-150-جرام\",\n        \"sku\": \"81484980\",\n        \"barcode\": \"03398676\",\n        \"active\": \"1\",\n        \"cost\": \"100\",\n        \"price\": \"150\",\n        \"discount\": \"10\",\n        \"discount_type\": \"percent\",\n        \"ingredients\": [\n            {\n                \"id\": 1,\n                \"name\": \"لحم بقري\",\n                \"stock\": 150\n            },\n            {\n                \"id\": 2,\n                \"name\": \"بصل\",\n                \"stock\": 20\n            },\n            {\n                \"id\": 3,\n                \"name\": \"جبن\",\n                \"stock\": 30\n            }\n        ],\n        \"images\": [\n            {\n                \"id\": 1,\n                \"is_main\": true,\n                \"image\": \"http://localhost/storage/1/96426.jpg\",\n                \"created_at\": \"2024 Oct 20 09:59:59\"\n            }\n        ],\n        \"created_at\": \"2024 Oct 20 09:59:59\"\n    },\n    \"message\": \"بيانات المنتجات\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Front",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "logout",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{front_url}}/logout",
+									"host": [
+										"{{front_url}}"
+									],
+									"path": [
+										"logout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"let jsonData = JSON.parse(responseBody);\r",
+											"\r",
+											"pm.collectionVariables.set(\"customer_token\", jsonData.data._token);"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\" : \"customer@email.com\",\r\n    \"password\" : \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{front_url}}/login",
+									"host": [
+										"{{front_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Home",
+					"item": [
+						{
+							"name": "products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{front_url}}/home/products?per_page=10&page=1",
+									"host": [
+										"{{front_url}}"
+									],
+									"path": [
+										"home",
+										"products"
+									],
+									"query": [
+										{
+											"key": "per_page",
+											"value": "10"
+										},
+										{
+											"key": "page",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{front_url}}/home/products?per_page=10&page=1",
+											"host": [
+												"{{front_url}}"
+											],
+											"path": [
+												"home",
+												"products"
+											],
+											"query": [
+												{
+													"key": "per_page",
+													"value": "10"
+												},
+												{
+													"key": "page",
+													"value": "1"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 20 Oct 2024 11:44:27 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "59"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"data\": [\n            {\n                \"id\": 1,\n                \"name\": \"برجر\",\n                \"sku\": \"123456\",\n                \"price\": 150,\n                \"price_after_discount\": 135,\n                \"ingredients\": [\n                    {\n                        \"id\": 1,\n                        \"name\": \"لحم بقري\"\n                    },\n                    {\n                        \"id\": 2,\n                        \"name\": \"بصل\"\n                    },\n                    {\n                        \"id\": 3,\n                        \"name\": \"جبن\"\n                    }\n                ]\n            }\n        ],\n        \"current_page\": 1,\n        \"last_page\": 1,\n        \"items_count\": 1\n    },\n    \"message\": \"بيانات المنتجات\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "store",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": [
+								{
+									"name": "success",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"products\": [\r\n        {\r\n            \"product_id\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{front_url}}/orders",
+											"host": [
+												"{{front_url}}"
+											],
+											"path": [
+												"orders"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.21"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 21 Oct 2024 00:30:47 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "X-RateLimit-Limit",
+											"value": "60"
+										},
+										{
+											"key": "X-RateLimit-Remaining",
+											"value": "56"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 16,\n        \"order_number\": 709321,\n        \"total\": 270,\n        \"products\": [\n            {\n                \"id\": 10,\n                \"name\": \"برجر\",\n                \"price\": 150,\n                \"discount\": 10,\n                \"discount_type\": \"percent\",\n                \"paid_total\": 270\n            }\n        ]\n    },\n    \"message\": \"بيانات الطلبات\"\n}"
+								}
+							]
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{customer_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8000/api",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "front_url",
+			"value": "http://127.0.0.1:8000/api/front",
+			"type": "string"
+		},
+		{
+			"key": "customer_token",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
